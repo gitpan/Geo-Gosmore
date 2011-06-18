@@ -1,5 +1,5 @@
 {
-   "abstract" : "Interface to the headless L<gosmore(1)>",
+   "abstract" : "Interface to the headless L<gosmore(1)> routing application",
    "author" : [
       "\u00c3\u0086var Arnfj\u00c3\u00b6r\u00c3\u00b0 Bjarmason <avar@cpan.org>"
    ],
@@ -57,7 +57,7 @@
          "web" : "http://github.com/avar/geo-gosmore"
       }
    },
-   "version" : "0.02",
+   "version" : "0.03",
    "x_authority" : "cpan:AVAR"
 }
 

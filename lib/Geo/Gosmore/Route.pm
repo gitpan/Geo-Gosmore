@@ -3,7 +3,7 @@ BEGIN {
   $Geo::Gosmore::Route::AUTHORITY = 'cpan:AVAR';
 }
 BEGIN {
-  $Geo::Gosmore::Route::VERSION = '0.02';
+  $Geo::Gosmore::Route::VERSION = '0.03';
 }
 use Any::Moose;
 use warnings FATAL => "all";
@@ -45,6 +45,22 @@ sub _build_distance {
     }
 
     return $distance;
+}
+
+has travel_time => (
+    is            => 'ro',
+    isa           => 'Int',
+    documentation => '',
+    lazy_build    => 1,
+);
+
+sub _build_travel_time {
+    my ($self) = @_;
+
+    my $first_point = $self->points->[0];
+    my $travel_time = $first_point->[4];
+
+    return $travel_time;
 }
 
 1;

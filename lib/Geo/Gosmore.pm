@@ -3,7 +3,7 @@ BEGIN {
   $Geo::Gosmore::AUTHORITY = 'cpan:AVAR';
 }
 BEGIN {
-  $Geo::Gosmore::VERSION = '0.02';
+  $Geo::Gosmore::VERSION = '0.03';
 }
 use Any::Moose;
 use warnings FATAL => "all";
@@ -16,7 +16,7 @@ use Cwd qw(getcwd);
 
 =head1 NAME
 
-Geo::Gosmore - Interface to the headless L<gosmore(1)>
+Geo::Gosmore - Interface to the headless L<gosmore(1)> routing application
 
 =head1 SYNOPSIS
 
@@ -47,7 +47,7 @@ your new F<gosmore.pak>.
     );
 
     # Returns false if we can't find a route
-    my $route = $gosmore->find_route($query);
+    my $route = $gosmore->route($query);
     my $distance = $route->distance;
 
 =head1 DESCRIPTION
@@ -85,13 +85,14 @@ sub _build_gosmore_dirname {
     return $gosmore_dirname;
 }
 
-sub find_route {
+sub route {
     my ($self, $query) = @_;
 
     my $gosmore_dirname = $self->gosmore_dirname;
     my $query_string = $query->query_string;
 
     local $ENV{QUERY_STRING} = $query_string;
+    local $ENV{LC_NUMERIC} = "en_US";
     my $current_dirname = getcwd();
     chdir $gosmore_dirname;
     open my $gosmore, "gosmore |";
@@ -107,11 +108,13 @@ sub find_route {
         # We couldn't find a route
         return if $line eq 'No route found';
 
+        print STDERR "$line\n" if $ENV{DEBUG};
+
         # We're getting a stream of lat/lon values
         next unless $line =~ /^[0-9]/;
 
-        my ($lat, $lon, undef, $style, undef, $name) = split /,/, $line;
-        push @points => [ $lat, $lon, undef, $style, undef, $name ];
+        my ($lat, $lon, $junction_type, $style, $remaining_time, $name) = split /,/, $line;
+        push @points => [ $lat, $lon, $junction_type, $style, $remaining_time, $name ];
     }
 
     my $route = Geo::Gosmore::Route->new(
@@ -121,6 +124,7 @@ sub find_route {
     return $route;
 }
 
+1;
 
 =head1 LICENSE AND COPYRIGHT
 

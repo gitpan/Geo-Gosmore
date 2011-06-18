@@ -9,7 +9,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Interface to the headless L<gosmore(1)>',
+  'ABSTRACT' => 'Interface to the headless L<gosmore(1)> routing application',
   'AUTHOR' => 'Ævar Arnfjörð Bjarmason <avar@cpan.org>',
   'BUILD_REQUIRES' => {
     'File::Find' => '0',
@@ -30,7 +30,7 @@ my %WriteMakefileArgs = (
     'Geo::Distance::XS' => '0',
     'autodie' => '0'
   },
-  'VERSION' => '0.02',
+  'VERSION' => '0.03',
   'test' => {
     'TESTS' => 't/*.t'
   }

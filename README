@@ -1,5 +1,5 @@
 NAME
-    Geo::Gosmore - Interface to the headless gosmore(1)
+    Geo::Gosmore - Interface to the headless gosmore(1) routing application
 
 SYNOPSIS
     First install gosmore(1), e.g. on Debian:
@@ -29,7 +29,7 @@ SYNOPSIS
         );
 
         # Returns false if we can't find a route
-        my $route = $gosmore->find_route($query);
+        my $route = $gosmore->route($query);
         my $distance = $route->distance;
 
 DESCRIPTION

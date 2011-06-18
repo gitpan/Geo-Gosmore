@@ -1,5 +1,9 @@
 Revision history for Geo::Gosmore
 
+0.03 2011-06-18 19:48:37
+
+    - Documentation, improved API. Travel time API.
+
 0.02 2011-06-18 13:39:17
 
     - Add the handling of no route found to the API.
