@@ -1,5 +1,9 @@
 Revision history for Geo::Gosmore
 
+0.02 2011-06-18 13:39:17
+
+    - Add the handling of no route found to the API.
+
 0.01 2011-06-18 13:16:41
 
     - Initial buggy version

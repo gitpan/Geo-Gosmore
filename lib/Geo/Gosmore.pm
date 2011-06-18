@@ -3,7 +3,7 @@ BEGIN {
   $Geo::Gosmore::AUTHORITY = 'cpan:AVAR';
 }
 BEGIN {
-  $Geo::Gosmore::VERSION = '0.01';
+  $Geo::Gosmore::VERSION = '0.02';
 }
 use Any::Moose;
 use warnings FATAL => "all";
@@ -45,6 +45,8 @@ your new F<gosmore.pak>.
         fast => 1,
         v    => 'motorcar',
     );
+
+    # Returns false if we can't find a route
     my $route = $gosmore->find_route($query);
     my $distance = $route->distance;
 
@@ -97,7 +99,15 @@ sub find_route {
 
     my @points;
     while (my $line = <$gosmore>) {
+        # Skip the HTTP header
+        next if $. == 1 || $. == 2;
+
         $line =~ s/[[:cntrl:]]//g;
+
+        # We couldn't find a route
+        return if $line eq 'No route found';
+
+        # We're getting a stream of lat/lon values
         next unless $line =~ /^[0-9]/;
 
         my ($lat, $lon, undef, $style, undef, $name) = split /,/, $line;

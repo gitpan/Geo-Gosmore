@@ -29,5 +29,5 @@ resources:
   homepage: http://search.cpan.org/dist/Geo-Gosmore/
   license: http://dev.perl.org/licenses/
   repository: git://github.com/avar/geo-gosmore.git
-version: 0.01
+version: 0.02
 x_authority: cpan:AVAR

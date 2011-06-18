@@ -30,7 +30,7 @@ my %WriteMakefileArgs = (
     'Geo::Distance::XS' => '0',
     'autodie' => '0'
   },
-  'VERSION' => '0.01',
+  'VERSION' => '0.02',
   'test' => {
     'TESTS' => 't/*.t'
   }
