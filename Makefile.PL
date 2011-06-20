@@ -26,12 +26,14 @@ my %WriteMakefileArgs = (
   'PREREQ_PM' => {
     'Any::Moose' => '0',
     'Cwd' => '0',
+    'Data::Dumper' => '0',
     'File::Basename' => '0',
     'Geo::Distance::XS' => '0',
     'IPC::System::Simple' => '0',
+    'WWW::Mechanize' => '0',
     'autodie' => '0'
   },
-  'VERSION' => '0.04',
+  'VERSION' => '0.05',
   'test' => {
     'TESTS' => 't/*.t'
   }

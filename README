@@ -12,11 +12,11 @@ SYNOPSIS
         # pv(1) is not needed, it just shows you the import progress
         bzcat british_isles.osm.bz2 | pv | gosmore rebuild
 
-    Then use this library, with $gosmore_pak being the full path to your new
-    gosmore.pak.
+    Then use this library, with "gosmore_path" being the full path to your
+    new gosmore.pak.
 
         my $gosmore = Geo::Gosmore->new(
-            gosmore_pak => $gosmore_pak,
+            gosmore_path => $gosmore_path,
         );
 
         my $query = Geo::Gosmore::Query->new(
@@ -39,7 +39,25 @@ DESCRIPTION
     routing. This library just parses its simple output and provides
     accessors for it.
 
-    This is experimental software with an API subject to change.
+    We also support accessing the headless gosmore(1) program through a
+    remote CGI interface.
+
+ATTRIBUTES
+  gosmore_method
+    Either "binary" or "http". If binary "gosmore_path" is a path to a
+    gosmore.pak and we'll invoke gosmore(1) from your $PATH.
+
+    If it's "http" "gosmore_path" is a URL to an online gosmore router.
+
+  gosmore_path
+    Either a path to a gosmore.pak (see "gosmore_method") or a HTTP URL to a
+    gosmore CGI routing script without query parameters.
+
+METHODS
+  route
+    Find a route based on the attributes you've passed in. Takes a
+    Geo::Gosmore::Query object with your query, returns a
+    Geo::Gosmore::Route object.
 
 LICENSE AND COPYRIGHT
     Copyright 2011 Ævar Arnfjörð Bjarmason <avar@cpan.org>

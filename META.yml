@@ -21,14 +21,16 @@ no_index:
 requires:
   Any::Moose: 0
   Cwd: 0
+  Data::Dumper: 0
   File::Basename: 0
   Geo::Distance::XS: 0
   IPC::System::Simple: 0
+  WWW::Mechanize: 0
   autodie: 0
 resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Geo-Gosmore
   homepage: http://search.cpan.org/dist/Geo-Gosmore/
   license: http://dev.perl.org/licenses/
   repository: git://github.com/avar/geo-gosmore.git
-version: 0.04
+version: 0.05
 x_authority: cpan:AVAR
