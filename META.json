@@ -30,6 +30,7 @@
             "Cwd" : 0,
             "File::Basename" : 0,
             "Geo::Distance::XS" : 0,
+            "IPC::System::Simple" : 0,
             "autodie" : 0
          }
       },
@@ -57,7 +58,7 @@
          "web" : "http://github.com/avar/geo-gosmore"
       }
    },
-   "version" : "0.03",
+   "version" : "0.04",
    "x_authority" : "cpan:AVAR"
 }
 

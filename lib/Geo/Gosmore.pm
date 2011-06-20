@@ -3,7 +3,7 @@ BEGIN {
   $Geo::Gosmore::AUTHORITY = 'cpan:AVAR';
 }
 BEGIN {
-  $Geo::Gosmore::VERSION = '0.03';
+  $Geo::Gosmore::VERSION = '0.04';
 }
 use Any::Moose;
 use warnings FATAL => "all";

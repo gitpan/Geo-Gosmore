@@ -28,9 +28,10 @@ my %WriteMakefileArgs = (
     'Cwd' => '0',
     'File::Basename' => '0',
     'Geo::Distance::XS' => '0',
+    'IPC::System::Simple' => '0',
     'autodie' => '0'
   },
-  'VERSION' => '0.03',
+  'VERSION' => '0.04',
   'test' => {
     'TESTS' => 't/*.t'
   }
